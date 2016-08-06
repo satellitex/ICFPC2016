@@ -1,0 +1,1 @@
+{"ok":false,"error":"Invalid solution spec: Facet #8 has duplicated vertices."}
