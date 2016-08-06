@@ -14,8 +14,10 @@ struct Bun{ // x/y
     kiyaku();
   }
   void kiyaku(){
-    ll c = __gcd( x, y );
+    ll c = __gcd( abs(x), abs(y) );
     x/=c; y/=c;
+    if( x < 0 && y < 0 ) { x*=-1; y*=-1; }
+    else if( y < 0 ) { x *= -1; y *= -1; }
   }
   bool operator == (const Bun b )const{ return x == b.x && y == b.y; }
   bool operator < (const Bun b )const{ return x * b.y < b.x * y; }
