@@ -16,9 +16,15 @@ problems.each{ |problem|
   p_id = problem['problem_id']
   p_hash = problem['problem_spec_hash']
 
+  fname = "./inputs/"+p_id.to_s+".txt"
+  
+  if File.exist?( fname )
+    next
+  end
+  
   response = `curl --compressed -L -H Expect: -H 'X-API-Key: 297-509936fdbd7abfd41c69de9400d121f9' 'http://2016sv.icfpcontest.org/api/blob/#{p_hash}'`
     
-  fname = "./inputs/"+p_id.to_s+".txt"
+
   p fname
   p response
   File.open(fname,"w") do | file |
