@@ -2,7 +2,7 @@ require 'json'
 require 'net/http'
 require 'uri'
 
-json_file_path = './out'
+json_file_path = './b.json'
 
 
 json_data = open(json_file_path) do | io |
@@ -30,6 +30,10 @@ problems.each{ |problem|
   File.open(fname,"w") do | file |
     file.puts( response )
   end
-  sleep(0.5)
+  sleep(1)
+
+  if response.include?("DOCTYPE")
+    break
+  end
 }
 
