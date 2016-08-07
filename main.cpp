@@ -162,6 +162,17 @@ bool isCut(vector<Data> &mp,P a,P b){
   return false;
 }
 
+
+Bun change(Bun a){
+  if(a.x > 0){
+    return Bun(a.x/a.y,1);
+  }else{
+    ll ax=-a.x;
+    return Bun( -( (ax+a.y-1) /a.y  ) , 1 ) ;
+  }
+  return a;
+}
+
 int main(){
 
   int T,N;
@@ -192,16 +203,33 @@ int main(){
 
   ps = ConvexHull( ps );
 
+  Bun ax = ps[0].real();
+  Bun ay = ps[0].imag();
 
+  for(int i=0;i<(int)ps.size();i++){
+    ax = min ( ax, ps[i].real() );
+    ay = min ( ay, ps[i].imag() );
+  }
 
+  Bun nx = change(ax);
+  Bun ny = change(ay);
+  
+  //  cerr<<nx<<' '<<ny<<endl;
+  
   polygon pg, lineA,lineB;;
-  pg.push_back( P( Bun(0,1) , Bun(0,1) ) );
-  pg.push_back( P( Bun(1,1) , Bun(0,1) ) );
-  pg.push_back( P( Bun(1,1) , Bun(1,1) ) );
-  pg.push_back( P( Bun(0,1) , Bun(1,1) ) );
+  vector<S> sre;
+  pg.push_back( P( nx+Bun(0,1) , ny+Bun(0,1) ) );
+  pg.push_back( P( nx+Bun(1,1) , ny+Bun(0,1) ) );
+  pg.push_back( P( nx+Bun(1,1) , ny+Bun(1,1) ) );
+  pg.push_back( P( nx+Bun(0,1) , ny+Bun(1,1) ) );
+
+
+  if( ( nx.x + ny.x ) % 2 != 0 ){
+    sre.push_back( S(pg[1],pg[0]) );
+  }
 
   vector< Data > ma ;
-  ma.push_back( Data( pg, vector<S> () ) );
+  ma.push_back( Data( pg, sre ) );
 
   int size=ps.size();
 
