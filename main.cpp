@@ -224,9 +224,15 @@ int main(){
   pg.push_back( P( nx+Bun(0,1) , ny+Bun(1,1) ) );
 
 
-  if( ( nx.x + ny.x ) % 2 != 0 ){
+  /*
+  if( nx.x %2 != 0 ){
+    sre.push_back( S(pg[0],pg[3]) );
+  }
+
+  if( ny.y %2 != 0 ){
     sre.push_back( S(pg[1],pg[0]) );
   }
+  */
 
   vector< Data > ma ;
   ma.push_back( Data( pg, sre ) );
