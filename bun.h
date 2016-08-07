@@ -21,9 +21,12 @@ struct Bun{ // x/y
     if( x < 0 && y < 0 ) { x*=-1; y*=-1; }
     else if( y < 0 ) { x *= -1; y *= -1; }
   }
-  bool operator == (const Bun b )const{ return x == b.x && y == b.y; }
-  bool operator < (const Bun b )const{ return x * b.y < b.x * y; }
-  bool operator > (const Bun b )const{ return b < *this; }
+  bool operator == (const Bun& b )const{ return x == b.x && y == b.y; }
+  bool operator < (const Bun& b )const{ return x * b.y < b.x * y; }
+  bool operator <=(const Bun& b ) const{return x * b.y <=b.x * y; }
+  bool operator > (const Bun& b )const{ return b < *this; }
+  bool operator >= (const Bun& b )const{ return b <= *this; }
+
   string str(){
     stringstream ss;
     ss << x << "/" << y;
@@ -65,6 +68,10 @@ struct Bun{ // x/y
     *this = *this / b;
     return *this;
   }
+  
+  Bun operator-() const {
+    return Bun( -x, y );
+  }
 
 };
 
@@ -73,4 +80,5 @@ ostream &operator<<(ostream &out, const Bun &tgt)
   out << tgt.x << "/" << tgt.y;
   return out;
 }
+
 
