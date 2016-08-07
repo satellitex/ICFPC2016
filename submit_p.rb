@@ -1,5 +1,5 @@
 require './setting.rb'
-N=3000
+N=10000
 
 N.times{ |i|
   output_file = SUBMIT_DIR + i.to_s + '.txt'
