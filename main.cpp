@@ -279,8 +279,11 @@ int main(){
   }
   
   for(int i=0;i<(int)v.size();i++){
-    cout<< v[i].real().str() <<',';
-    cout<< v[i].imag().str() <<endl;
+
+    P tmp=v[i];
+    tmp -= P(nx,ny);
+    cout<< tmp.real().str() <<',';
+    cout<< tmp.imag().str() <<endl;
   }
 
   cout<<mat.size()<<endl;
