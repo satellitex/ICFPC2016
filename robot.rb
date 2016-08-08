@@ -12,7 +12,7 @@ while true
   
   sleep(2)
   
-  snap = json_data["snapshots"].last  
+  snap = json_data["snapshots"].last
   shash = snap["snapshot_hash"]
 
   p shash

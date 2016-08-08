@@ -8,7 +8,7 @@ N.times{ |i|
     File.open( fname, "r" ) do | file |
       flag = false
       file.each_line{ |line|
-        if line.include?("false")
+        if line.include?("false") or line.include?("0.0,")         
           flag = true
         end
       }

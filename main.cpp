@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include "Bun.h"
+#include "bun.h"
 using namespace std;
 
 
@@ -240,6 +240,7 @@ int main(){
   int size=ps.size();
 
   bool update=true;
+  int cnt = 0;
   while(update){
     update=false;
     for(int i=0;i<size;i++){
@@ -251,7 +252,11 @@ int main(){
       lineB.push_back(b);
       ma = cutPaper( ma, S(a,b) );
       update=true;
+      if( ma.size() > 20 ) break;
     }
+    if( ma.size() > 20 ) break;
+    cnt++;
+    if( cnt > 20 ) break;
   }
 
 
